@@ -6,7 +6,6 @@ module MemoAccessHelper
     @db.transaction do
       @db[PSTORE_NAME] ||= { '0' => { title: 'サンプル', body: 'これはサンプルです。' } }
       @db.commit
-      @logger.info @db[PSTORE_NAME]
     end
   end
 
@@ -29,9 +28,10 @@ module MemoAccessHelper
   def store_memo(id, title, body)
     title = 'Untitled' if title.empty?
     @db.transaction do
-      @db[PSTORE_NAME][id] = { title: title, body: body }
+      @memo = @db[PSTORE_NAME][id] = { title: title, body: body }
       @db.commit
     end
+    @memo
   end
 
   def create_new_id
@@ -43,8 +43,9 @@ module MemoAccessHelper
 
   def delete_memo_by_id(id)
     @db.transaction do
-      @db[PSTORE_NAME].delete(id)
+      @memo = @db[PSTORE_NAME].delete(id)
       @db.commit
     end
+    @memo
   end
 end

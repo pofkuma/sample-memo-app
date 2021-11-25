@@ -24,21 +24,21 @@ end
 
 post '/memo' do
   new_id = create_new_id
-  store_memo(new_id, params[:title], params[:body])
-  @logger.info "Created id:#{new_id}"
+  memo = store_memo(new_id, params[:title], params[:body])
+  @logger.info "Created id:#{new_id} title: #{memo[:title]}"
   redirect "/memo/#{new_id}"
 end
 
 patch '/memo/:id' do |id|
   @id = id
-  store_memo(id, params[:title], params[:body])
-  @logger.info "Updated id:#{id}"
+  memo = store_memo(id, params[:title], params[:body])
+  @logger.info "Updated id:#{id} title: #{memo[:title]}"
   redirect "/memo/#{@id}"
 end
 
 delete '/memo/:id' do |id|
   @id = id
-  delete_memo_by_id(id)
-  @logger.info "Deleted id:#{id}"
+  memo = delete_memo_by_id(id)
+  @logger.info "Deleted id:#{id} title: #{memo[:title]}"
   redirect '/'
 end
