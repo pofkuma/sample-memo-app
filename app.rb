@@ -20,14 +20,19 @@ before do
 
   @logger ||= Logger.new(LOG_FILE)
 
-  @db ||= PStore.new(PSTORE_FILE)
-  @db.transaction do
-    @db[PSTORE_NAME] ||= { '0' => { title: 'サンプル', body: 'これはサンプルです。' } }
-    @db.commit
-    @logger.info @db[PSTORE_NAME]
-  end
+  setup_db
 end
+
 module MemoIO
+  def setup_db
+    @db ||= PStore.new(PSTORE_FILE)
+    @db.transaction do
+      @db[PSTORE_NAME] ||= { '0' => { title: 'サンプル', body: 'これはサンプルです。' } }
+      @db.commit
+      @logger.info @db[PSTORE_NAME]
+    end
+  end
+
   def fetch_all_memos
     @db.transaction(true) do |pstore|
       @memos = pstore.fetch(PSTORE_NAME).filter do |_id, content|
