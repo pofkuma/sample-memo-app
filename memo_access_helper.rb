@@ -19,8 +19,12 @@ module MemoAccessHelper
   end
 
   def fetch_memo_by_id(id)
-    @db.transaction(true) do |pstore|
-      @memo = pstore.fetch(PSTORE_NAME).fetch(id)
+    begin
+      @db.transaction(true) do |pstore|
+        @memo = pstore.fetch(PSTORE_NAME).fetch(id)
+      end
+    rescue KeyError
+      halt 404
     end
     @memo
   end
@@ -46,6 +50,7 @@ module MemoAccessHelper
       @memo = @db[PSTORE_NAME].delete(id)
       @db.commit
     end
+    halt 404 if @memo.nil?
     @memo
   end
 end

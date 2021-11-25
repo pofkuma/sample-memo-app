@@ -42,3 +42,7 @@ delete '/memo/:id' do |id|
   @logger.info "Deleted id:#{id} title: #{memo[:title]}"
   redirect '/'
 end
+
+get '/*' do
+  halt 404
+end
