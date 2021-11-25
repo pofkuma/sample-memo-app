@@ -9,5 +9,6 @@ group :development do
   gem 'rubocop-fjord', require: false
 end
 
+gem 'erubi'
 gem 'sinatra'
 gem 'webrick'
