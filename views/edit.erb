@@ -1,0 +1,18 @@
+<div>
+  <form action="/memo/<%= @id %>" method="post">
+    <div class="form-items">
+      <div class="form-items__item">
+        <label>Title</label>
+        <input type="text" name="title" value='<%= @memo[:title] %>'>
+      </div>
+      <div class="form-items__item">
+        <label>Content</label>
+        <textarea name="body"><%= @memo[:body] %></textarea>
+      </div>
+    </div>
+    <div class="form-action">
+      <input type="hidden" name="_method" value="patch">
+      <input type="submit" value="Update">
+    </div>
+  </form>
+</div>

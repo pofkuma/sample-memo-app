@@ -1,0 +1,15 @@
+<h2><%= @memo[:title] %></h2>
+
+<p><%= @memo[:body] %></p>
+
+<div class="flex-layout-buttons">
+<div class="link-button">
+  <a href='/memo/<%= @id %>/edit'>Edit</a>
+</div>
+
+<div class="form-action">
+  <form action='/memo/<%= @id %>' method="post">
+    <input  type="hidden" name="_method" value="delete">
+    <input  type="submit" value="Delete">
+  </form>
+</div>
