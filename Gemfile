@@ -11,4 +11,5 @@ end
 
 gem 'erubi'
 gem 'sinatra'
+gem 'sinatra-contrib'
 gem 'webrick'
