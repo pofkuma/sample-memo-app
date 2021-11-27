@@ -6,7 +6,12 @@ module MemoAccessHelper
   def setup_db
     @db ||= PStore.new(PSTORE_FILE)
     @db.transaction do
-      @db[PSTORE_NAME] ||= { '0' => Memo.new(title: 'サンプル', body: 'これはサンプルです。') }
+      @db[PSTORE_NAME] ||= {
+        '0' => Memo.new(
+          title: 'Sample',
+          body: "This is a sample text.\r\nYou can edit or delete this memo."
+        )
+      }
     end
   end
 
