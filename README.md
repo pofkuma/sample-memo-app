@@ -10,7 +10,7 @@ Sinatraを使って作成しています。
 ### 手順
 1. Gitを使ってリポジトリをクローンします。
 ```
-$ git clone attps://github.com/pofkuma/sample-memo-app.git
+$ git clone https://github.com/pofkuma/sample-memo-app.git
 ```
 
 2. Bundler を使って必要な gem をインストールします。
