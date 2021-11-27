@@ -4,7 +4,7 @@ module MemoAccessHelper
   PSTORE_NAME = 'memos'
 
   def setup_db
-    @db ||= PStore.new(PSTORE_FILE)
+    @db ||= PStore.new("#{__dir__}/#{PSTORE_FILE}")
     @db.transaction do
       @db[PSTORE_NAME] ||= {
         '0' => Memo.new(

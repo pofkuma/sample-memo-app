@@ -10,8 +10,8 @@ require_relative 'memo'
 require_relative 'memo_access_helper'
 require_relative 'route'
 
-LOG_FILE = "#{__dir__}/log/sample-memo-app.log"
-PSTORE_FILE = "#{__dir__}/db/sample-memo-app.pstore"
+LOG_FILE = '/log/sample-memo-app.log'
+PSTORE_FILE = '/db/sample-memo-app.pstore'
 
 configure do
   set :public_folder, "#{__dir__}/static"
@@ -21,7 +21,7 @@ end
 before do
   @app_name = 'Memo App'
 
-  @logger ||= Logger.new(LOG_FILE)
+  @logger ||= Logger.new("#{__dir__}/#{LOG_FILE}")
 
   setup_db
 end
