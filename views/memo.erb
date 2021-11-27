@@ -8,7 +8,7 @@
   </div>
 
   <div class="form-action">
-    <form action='/memo/<%= @id %>' method="post">
+    <form action="/memo/<%= @id %>" method="post" onSubmit="return confirm('Delete this memo?');">
       <input  type="hidden" name="_method" value="delete">
       <input  type="submit" value="Delete">
     </form>
