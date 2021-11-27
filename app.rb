@@ -12,7 +12,6 @@ require_relative 'route'
 
 LOG_FILE = "#{__dir__}/log/sample-memo-app.log"
 PSTORE_FILE = "#{__dir__}/db/sample-memo-app.pstore"
-PSTORE_NAME = 'memos'
 
 configure do
   set :public_folder, "#{__dir__}/static"

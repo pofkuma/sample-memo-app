@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module MemoAccessHelper
+  PSTORE_NAME = 'memos'
+
   def setup_db
     @db ||= PStore.new(PSTORE_FILE)
     @db.transaction do
