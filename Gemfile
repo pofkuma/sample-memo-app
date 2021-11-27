@@ -4,12 +4,13 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
-# For plain Ruby scripts
-group :development do
-  gem 'rubocop-fjord', require: false
-end
+ruby '3.0.3'
 
 gem 'erubi'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'webrick'
+
+group :development do
+  gem 'rubocop-fjord', require: false
+end
