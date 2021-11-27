@@ -5,6 +5,7 @@ Sinatraを使って作成しています。
 ## 構築方法
 ### 前提
 - [Git](https://git-scm.com/) がインストールされている
+- [Ruby](https://www.ruby-lang.org/) がインストールされている (`.ruby-version` に書かれているバージョン)
 - [Bundler](https://bundler.io/) がインストールされている
 
 ### 手順
