@@ -6,6 +6,7 @@ require 'logger'
 require 'pstore'
 require 'erubi'
 
+require_relative 'memo'
 require_relative 'memo_access_helper'
 require_relative 'route'
 
