@@ -1,11 +1,11 @@
 <div class="link-button">
-  <a href='/new'>New</a>
+  <a href='memos/new'>New</a>
 </div>
 <div>
   <ul>
     <% @memos.each do |id, content| %>
       <li data-id='<%= id %>'>
-        <a href='/memo/<%= id %>'><%= content.title %></a>
+        <a href='/memos/<%= id %>'><%= content.title %></a>
       </li>
     <% end %>
   </ul>

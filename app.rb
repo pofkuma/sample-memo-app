@@ -8,7 +8,7 @@ require 'erubi'
 
 require_relative 'memo'
 require_relative 'memo_access_helper'
-require_relative 'route'
+require_relative 'routes'
 
 LOG_FILE = '/log/sample-memo-app.log'
 PSTORE_FILE = '/db/sample-memo-app.pstore'
