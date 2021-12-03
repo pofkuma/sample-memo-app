@@ -33,17 +33,15 @@ module MemoAccessHelper
     halt 404
   end
 
-  def store_memo(id, memo)
+  def store_memo(memo, id = nil)
     memo.title = 'Untitled' if memo.title.empty?
     @db.transaction do
+      if id.nil?
+        new_id = @db[PSTORE_NAME].keys.max.to_i + 1
+        id = new_id.to_s
+      end
       @db[PSTORE_NAME][id] = memo
-    end
-  end
-
-  def create_new_id
-    @db.transaction do
-      new_id = @db[PSTORE_NAME].keys.max.to_i + 1
-      new_id.to_s
+      id
     end
   end
 

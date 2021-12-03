@@ -26,9 +26,8 @@ get '/memos/:id/edit' do |id|
 end
 
 post '/memos' do
-  new_id = create_new_id
   memo = Memo.new(title: params[:title], body: params[:body])
-  store_memo(new_id, memo)
+  new_id = store_memo(memo)
   @logger.info "Created id:#{new_id} title: #{memo.title}"
   redirect "/memos/#{new_id}"
 end
@@ -37,7 +36,7 @@ patch '/memos/:id' do |id|
   @id = id
 
   memo = Memo.new(title: params[:title], body: params[:body])
-  store_memo(id, memo)
+  store_memo(memo, id)
   @logger.info "Updated id:#{id} title: #{memo.title}"
   redirect "/memos/#{@id}"
 end
