@@ -15,13 +15,13 @@ end
 
 get '/memos/:id' do |id|
   @id = id
-  @memo = fetch_memo_by_id(id)
+  @memo = fetch_memo_by_id(id) || (halt 404)
   erb :memo
 end
 
 get '/memos/:id/edit' do |id|
   @id = id
-  @memo = fetch_memo_by_id(id)
+  @memo = fetch_memo_by_id(id) || (halt 404)
   erb :edit
 end
 

@@ -27,10 +27,8 @@ module MemoAccessHelper
 
   def fetch_memo_by_id(id)
     @db.transaction(true) do |pstore|
-      pstore.fetch(PSTORE_NAME).fetch(id)
+      pstore.fetch(PSTORE_NAME)[id]
     end
-  rescue KeyError
-    halt 404
   end
 
   def store_memo(memo, id = nil)
