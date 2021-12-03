@@ -47,8 +47,7 @@ module MemoAccessHelper
 
   def delete_memo_by_id(id)
     @db.transaction do
-      memo = @db[PSTORE_NAME].delete(id)
-      memo
+      @db[PSTORE_NAME].delete(id)
     end
   end
 end
