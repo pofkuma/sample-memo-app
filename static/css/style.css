@@ -1,0 +1,171 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/**
+ * my-css
+ */
+
+ *, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 32px 0;
+  color: #56564f;
+  width: 500px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+h1 a {
+  text-decoration: none;
+  color: gray;
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  border-bottom: dotted 5px lightgray;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
+
+p, li {
+  line-height: 1.8;
+}
+
+p, ul, ol {
+  margin-bottom: 1.5em;
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 2em;
+}
+
+li a:link, li a:visited {
+  color: #058cff;
+  text-decoration: none;
+}
+
+li a:hover {
+  color: #058cff;
+  text-decoration: underline;
+}
+
+.form-action {
+  text-align: center;
+}
+
+.form-items__item {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: .5rem;
+  text-align: left;
+}
+
+input[type="text"],
+textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: .5rem;
+  border: solid 1px #aaa;
+  border-radius: 4px;
+  outline-color: #9dbbff;
+  padding-right: 8px;
+}
+
+textarea {
+  height: 8rem;
+}
+
+div.link-button a,
+input[type="submit"] {
+  color: white;
+  font-size: 1rem;
+  width: 10rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  border: none;
+  border-radius: 4px;
+}
+
+div.link-button a {
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  text-decoration: none;
+  background-color: #5bb4ff;
+}
+
+div.link-button a:hover {
+  background-color: #058cff;
+}
+
+input[type="submit"] {
+  background-color: #ffa65b;
+}
+
+input[type="submit"]:hover {
+  background-color: #ff7805;
+}
+
+div.flex-layout-buttons {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 2rem;
+}

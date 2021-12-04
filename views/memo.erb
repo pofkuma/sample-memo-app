@@ -1,0 +1,16 @@
+<h2><%= @memo.title %></h2>
+
+<p><% @memo.body.split("\r\n").each do |line| %><%= line %><br><% end %></p>
+
+<div class="flex-layout-buttons">
+  <div class="link-button">
+    <a href='/memos/<%= @id %>/edit'>Edit</a>
+  </div>
+
+  <div class="form-action">
+    <form action="/memos/<%= @id %>" method="post" onSubmit="return confirm('Delete this memo?');">
+      <input  type="hidden" name="_method" value="delete">
+      <input  type="submit" value="Delete">
+    </form>
+  </div>
+</div>

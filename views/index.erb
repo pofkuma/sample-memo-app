@@ -1,0 +1,12 @@
+<div class="link-button">
+  <a href='memos/new'>New</a>
+</div>
+<div>
+  <ul>
+    <% @memos.each do |id, content| %>
+      <li data-id='<%= id %>'>
+        <a href='/memos/<%= id %>'><%= content.title %></a>
+      </li>
+    <% end %>
+  </ul>
+</div>
