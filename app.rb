@@ -42,7 +42,7 @@ module MemoAccessHelper
     conn
 
     @conn.exec(<<~SQL)
-      CREATE TABLE memos( id    integer,
+      CREATE TABLE memos( id    serial,
                           title varchar(256),
                           body  varchar(1000),
                           PRIMARY KEY (id)    );
@@ -67,17 +67,10 @@ module MemoAccessHelper
   end
 
   def insert_memo_with_new_id(memo)
-    @conn.transaction do |t_conn|
-      memo.id = t_conn.exec(<<~SQL).first['max'].to_i + 1
-        SELECT MAX(id) FROM memos;
-      SQL
-
-      t_conn.exec_params(<<~SQL, [memo.id, memo.title, memo.body])
-        INSERT INTO memos(id, title, body) VALUES($1, $2, $3);
-      SQL
-
-      memo.id
-    end
+    @conn.exec_params(<<~SQL, [memo.title, memo.body]).first['id']
+      INSERT INTO memos(title, body) VALUES($1, $2)
+      RETURNING id;
+    SQL
   end
 
   def update_memo(memo)
