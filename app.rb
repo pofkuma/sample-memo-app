@@ -56,12 +56,12 @@ module MemoAccessHelper
 
   def select_all_memos
     @conn.exec(<<~SQL).map { _1.transform_keys(&:to_sym) }
-      SELECT * FROM memos;
+      SELECT * FROM memos ORDER BY id;
     SQL
   end
 
   def select_memo_by_id(id)
-    @conn.exec_params(@conn.escape_string(<<~SQL), [id]).first&.transform_keys(&:to_sym)
+    @conn.exec_params(<<~SQL, [id]).first&.transform_keys(&:to_sym)
       SELECT * FROM memos WHERE id = $1;
     SQL
   end
