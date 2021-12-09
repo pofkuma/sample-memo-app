@@ -3,9 +3,9 @@
 </div>
 <div>
   <ul>
-    <% @memos.each do |id, content| %>
-      <li data-id='<%= id %>'>
-        <a href='/memos/<%= id %>'><%= content.title %></a>
+    <% @memos.each do |memo| %>
+      <li data-id='<%= memo.id %>'>
+        <a href='/memos/<%= memo.id %>'><%= memo.title %></a>
       </li>
     <% end %>
   </ul>

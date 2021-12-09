@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class Memo
-  attr_accessor :title, :body
+  attr_accessor :id, :title, :body
 
-  def initialize(title:, body:)
-    @title = title
+  def initialize(id:, title:, body:)
+    @id = id
+    @title = title.empty? ? 'Untitled' : title
     @body = body
   end
 end
