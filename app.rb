@@ -54,19 +54,19 @@ module MemoAccessHelper
     puts e.message
   end
 
-  def fetch_all_memos
+  def select_all_memos
     @conn.exec(<<~SQL).map { _1.transform_keys(&:to_sym) }
       SELECT * FROM memos;
     SQL
   end
 
-  def fetch_memo_by_id(id)
+  def select_memo_by_id(id)
     @conn.exec_params(@conn.escape_string(<<~SQL), [id]).first&.transform_keys(&:to_sym)
       SELECT * FROM memos WHERE id = $1;
     SQL
   end
 
-  def insert_memo(memo)
+  def insert_memo_with_new_id(memo)
     @conn.transaction do |t_conn|
       memo.id = t_conn.exec(<<~SQL).first['max'].to_i + 1
         SELECT MAX(id) FROM memos;

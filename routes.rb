@@ -5,7 +5,7 @@ get '/' do
 end
 
 get '/memos' do
-  @memos = fetch_all_memos.map { |memo| Memo.new(**memo) }
+  @memos = select_all_memos.map { |memo| Memo.new(**memo) }
   erb :index
 end
 
@@ -14,21 +14,21 @@ get '/memos/new' do
 end
 
 get '/memos/:id' do |id|
-  memo = fetch_memo_by_id(id.to_i) || (halt 404)
+  memo = select_memo_by_id(id.to_i) || (halt 404)
   p id
   @memo = Memo.new(**memo)
   erb :memo
 end
 
 get '/memos/:id/edit' do |id|
-  memo = fetch_memo_by_id(id.to_i) || (halt 404)
+  memo = select_memo_by_id(id.to_i) || (halt 404)
   @memo = Memo.new(**memo)
   erb :edit
 end
 
 post '/memos' do
   memo = { id: nil, title: params[:title], body: params[:body] }
-  new_id = insert_memo Memo.new(**memo)
+  new_id = insert_memo_with_new_id Memo.new(**memo)
 
   @logger.info "Created id:#{new_id} title: #{memo[:title]}"
   redirect "/memos/#{new_id}"
@@ -37,7 +37,7 @@ end
 patch '/memos/:id' do |id|
   @id = id
 
-  memo = fetch_memo_by_id(id.to_i) || (halt 404)
+  memo = select_memo_by_id(id.to_i) || (halt 404)
   new_memo = { id: id, title: params[:title], body: params[:body] }
   update_memo Memo.new(**new_memo)
 
@@ -46,7 +46,7 @@ patch '/memos/:id' do |id|
 end
 
 delete '/memos/:id' do |id|
-  memo = fetch_memo_by_id(id.to_i) || (halt 404)
+  memo = select_memo_by_id(id.to_i) || (halt 404)
   delete_memo_by_id(id.to_i)
 
   @logger.info "Deleted id:#{id} title: #{memo[:title]}"
