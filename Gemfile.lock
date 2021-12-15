@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
+    dotenv (2.7.6)
     erubi (1.10.0)
     multi_json (1.15.0)
     mustermann (1.1.1)
@@ -9,6 +10,7 @@ GEM
     parallel (1.21.0)
     parser (3.0.3.0)
       ast (~> 2.4.1)
+    pg (1.2.3)
     rack (2.2.3)
     rack-protection (2.1.0)
       rack
@@ -53,7 +55,9 @@ PLATFORMS
   x86_64-darwin-21
 
 DEPENDENCIES
+  dotenv
   erubi
+  pg
   rubocop-fjord
   sinatra
   sinatra-contrib

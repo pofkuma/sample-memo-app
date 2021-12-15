@@ -4,11 +4,11 @@
 
 <div class="flex-layout-buttons">
   <div class="link-button">
-    <a href='/memos/<%= @id %>/edit'>Edit</a>
+    <a href='/memos/<%= @memo.id %>/edit'>Edit</a>
   </div>
 
   <div class="form-action">
-    <form action="/memos/<%= @id %>" method="post" onSubmit="return confirm('Delete this memo?');">
+    <form action="/memos/<%= @memo.id %>" method="post" onSubmit="return confirm('Delete this memo?');">
       <input  type="hidden" name="_method" value="delete">
       <input  type="submit" value="Delete">
     </form>
